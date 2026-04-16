@@ -52,6 +52,7 @@ Google Gemini API Key - For AI capabilities
 Chrome/Chromium - For extension
 
 📁 Project Structure
+
 email-writer-sb/
 ├── src/
 │   ├── main/
@@ -83,6 +84,7 @@ email-writer-ext/
 ├── manifest.json
 ├── content.js
 └── content.css
+
 
 📦 Dependencies
 Backend
