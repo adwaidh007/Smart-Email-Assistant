@@ -24,6 +24,7 @@ Lombok for reduced boilerplate
 Key Features:
 
 POST /api/email/generate - Generates email replies based on input content and tone
+
 2. email-writer-react (React Frontend)
 React 19 with Vite bundler
 Material-UI (MUI) components for professional UI
