@@ -1,75 +1,123 @@
-Email Writer Assistant
 
-An AI-powered email writing assistant that helps you draft professional and effective emails quickly and easily using Google Gemini API. This project consists of three integrated components: a Spring Boot backend, a React frontend, and a Chrome extension.
+# ✉️ Email Writer Assistant
 
-📋 Project Overview
-Email Writer Assistant is a full-stack application that leverages AI to generate contextual email replies. It provides multiple interfaces:
+An **AI-powered email writing assistant** that helps you generate professional and context-aware email replies instantly using the **Google Gemini API**.
 
-Backend API - Spring Boot REST service that communicates with Google Gemini API
-React Web Application - Interactive UI for generating email replies
-Chrome Extension - Seamless integration with Gmail for in-browser email composition
+This is a **full-stack application** consisting of a **Spring Boot backend**, **React frontend**, and a **Chrome Extension** for seamless Gmail integration.
 
-🏗️ Architecture
+---
+
+## 🚀 Features
+
+* ✨ Generate smart, contextual email replies
+* 🎯 Choose tone (Professional, Casual, etc.)
+* ⚡ Real-time response generation
+* 🌐 Multiple interfaces:
+
+  * Web App (React)
+  * Gmail Integration (Chrome Extension)
+* 🔄 Fast API communication using WebClient
+* 🧠 Powered by Google Gemini AI
+
+---
+
+## 🏗️ Architecture
+
+```
 email-writer-sb/        → Spring Boot Backend (Port 8080)
 email-writer-react/     → React Frontend (Vite)
 email-writer-ext/       → Chrome Extension
+```
 
-Components
-1. email-writer-sb (Spring Boot Backend)
-Java 25 with Spring Boot 4.0.5
-REST API for email generation
-Integration with Google Gemini API
-WebClient for reactive HTTP requests
-Lombok for reduced boilerplate
-Key Features:
+---
 
-POST /api/email/generate - Generates email replies based on input content and tone
+## 🧩 Components Overview
 
-2. email-writer-react (React Frontend)
-React 19 with Vite bundler
-Material-UI (MUI) components for professional UI
-Axios for API communication
-Built with ESLint for code quality
+### 🔹 1. Backend – `email-writer-sb`
 
-Key Features:
+**Tech Stack:**
 
-- Email content input field
-- Tone selection dropdown
-- Real-time loading states
-- Error handling
-  
-3. email-writer-ext (Chrome Extension)
-Manifest V3 compatible
-Integrates with Gmail interface
-Content script for DOM manipulation
-Communicates with backend API
-🚀 Getting Started
-Prerequisites
-Java 25 - For backend
-Node.js 18+ - For React frontend
-npm or yarn - Package manager
-Google Gemini API Key - For AI capabilities
-Chrome/Chromium - For extension
+* Java 25
+* Spring Boot 4.0.5
+* Spring WebFlux (Reactive)
+* Lombok
 
-📁 Project Structure
+**Key Responsibilities:**
 
+* Handle API requests
+* Communicate with Google Gemini API
+* Generate AI-based email replies
+
+**Endpoint:**
+
+```
+POST /api/email/generate
+```
+
+**Request Body:**
+
+```json
+{
+  "emailContent": "Original email text",
+  "tone": "professional"
+}
+```
+
+---
+
+### 🔹 2. Frontend – `email-writer-react`
+
+**Tech Stack:**
+
+* React 19
+* Vite
+* Material UI (MUI)
+* Axios
+
+**Features:**
+
+* Email input field
+* Tone selection dropdown
+* Loading indicators
+* Error handling UI
+
+---
+
+### 🔹 3. Chrome Extension – `email-writer-ext`
+
+**Tech Stack:**
+
+* Manifest V3
+* Vanilla JavaScript
+
+**Features:**
+
+* Injects "AI Reply" button in Gmail
+* Reads email content directly from UI
+* Sends request to backend
+* Auto-fills generated reply
+
+---
+
+## 📁 Project Structure
+
+```
 email-writer-sb/
-├── src/
-│   ├── main/
-│   │   ├── java/com/email/writer/
-│   │   │   ├── EmailWriterSbApplication.java
-│   │   │   ├── app/
-│   │   │   │   ├── EmailGeneratorController.java
-│   │   │   │   ├── EmailGeneratorService.java
-│   │   │   │   └── EmailRequest.java
-│   │   │   └── config/
-│   │   │       └── WebClientConfig.java
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/
+├── src/main/java/com/email/writer/
+│   ├── EmailWriterSbApplication.java
+│   ├── app/
+│   │   ├── EmailGeneratorController.java
+│   │   ├── EmailGeneratorService.java
+│   │   └── EmailRequest.java
+│   └── config/
+│       └── WebClientConfig.java
+├── resources/
+│   └── application.properties
 ├── pom.xml
 └── README.md
+```
 
+```
 email-writer-react/
 ├── src/
 │   ├── App.jsx
@@ -79,23 +127,98 @@ email-writer-react/
 ├── package.json
 ├── vite.config.js
 └── eslint.config.js
+```
 
+```
 email-writer-ext/
 ├── manifest.json
 ├── content.js
 └── content.css
+```
+
+---
+
+## ⚙️ Prerequisites
+
+Make sure you have the following installed:
+
+* ☕ Java 17+ (recommended 21+)
+* 🟢 Node.js 18+
+* 📦 npm / yarn
+* 🔑 Google Gemini API Key
+* 🌐 Chrome Browser
+
+---
+
+## 🛠️ Setup Instructions
+
+### 🔹 1. Backend Setup
+
+```bash
+cd email-writer-sb
+mvn clean install
+mvn spring-boot:run
+```
+
+Configure your API key in:
+
+```properties
+# application.properties
+gemini.api.url=YOUR_API_URL
+gemini.api.key=YOUR_API_KEY
+```
+
+---
+
+### 🔹 2. Frontend Setup
+
+```bash
+cd email-writer-react
+npm install
+npm run dev
+```
+
+---
+
+### 🔹 3. Chrome Extension Setup
+
+1. Go to `chrome://extensions/`
+2. Enable **Developer Mode**
+3. Click **Load unpacked**
+4. Select `email-writer-ext` folder
+
+---
+
+## 🔄 Workflow
+
+1. User writes or opens an email
+2. Clicks **"AI Reply"**
+3. Extension extracts email content
+4. Sends request to backend
+5. Backend calls Gemini API
+6. AI-generated reply is returned
+7. Reply is auto-filled in Gmail compose box
+
+---
+
+## 📦 Dependencies
+
+### Backend
+
+* Spring Boot
+* Spring WebFlux
+* Lombok
+* WebClient
+
+### Frontend
+
+* React
+* Material UI
+* Axios
+* Vite
+
+### Extension
+
+* Chrome Manifest V3
 
 
-📦 Dependencies
-Backend
-Spring Boot 4.0.5
-Spring WebFlux (Reactive)
-Lombok
-WebClient (for API calls)
-Frontend
-React 19
-Material-UI (MUI) v9
-Axios
-Vite
-Extension
-Chrome Manifest V3
