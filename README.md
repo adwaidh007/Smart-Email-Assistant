@@ -1,4 +1,5 @@
 Email Writer Assistant
+
 An AI-powered email writing assistant that helps you draft professional and effective emails quickly and easily using Google Gemini API. This project consists of three integrated components: a Spring Boot backend, a React frontend, and a Chrome extension.
 
 📋 Project Overview
